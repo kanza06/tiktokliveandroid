@@ -24,7 +24,8 @@ COPY server_app.py .
 # Fly meneruskan PORT lewat env; app.py membaca TTL_PORT
 ENV TTL_PORT=8080 \
     TTL_TUNNEL=0 \
-    TTL_DISCOVERY=0
+    TTL_DISCOVERY=0 \
+    TTL_WEB_ONLY=1
 
 EXPOSE 8080
 

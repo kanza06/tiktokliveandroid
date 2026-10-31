@@ -16,6 +16,8 @@ primary_region = "sin"
   TTL_TUNNEL = "0"
   # discovery UDP hanya untuk LAN; di Fly tidak ada LAN
   TTL_DISCOVERY = "0"
+  # boot hanya modul web (tanpa engine / TikTokLive) agar health check pasti hidup
+  TTL_WEB_ONLY = "1"
 
 [http_service]
   internal_port = 8080
