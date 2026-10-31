@@ -69,6 +69,26 @@ async def _boot_connect():
         engine.connect(cfg["username"])
 
 
+def _safe_boot() -> None:
+    """Startup engine + auto-connect di thread sendiri.
+
+    Di Fly.io tidak ada username tersimpan, jadi keduanya hanya menyentuh
+    filesystem/thread. Kalau salah satu melempar exception, server HTTP tetap
+    hidup agar health check /api/ping tidak gagal terus.
+    """
+    try:
+        engine.start()
+    except Exception as exc:  # noqa: BLE001
+        print(f"[BOOT] engine gagal start: {exc}", flush=True)
+        return
+    try:
+        cfg = config.load_settings()
+        if cfg.get("username") and cfg.get("auto_connect", True):
+            engine.connect(cfg["username"])
+    except Exception as exc:  # noqa: BLE001
+        print(f"[BOOT] auto-connect dilewati: {exc}", flush=True)
+
+
 # ---------------------------------------------------------------------------
 # Discovery: HP menemukan IP PC otomatis (tanpa setting IP manual)
 #   * HP mengirim broadcast UDP ke port 47653 -> server menjawab JSON /api/ping
@@ -93,7 +113,7 @@ def _discovery_listener() -> None:
             sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         except OSError:
             pass
-        sock.bind(("", DISCOVERY_PORT))
+        sock.bind(("0.0.0.0", DISCOVERY_PORT))
         sock.settimeout(0.5)
     except OSError as exc:
         print(f"[DISCOVERY] tidak aktif: {exc}", flush=True)
@@ -130,9 +150,10 @@ def _start_discovery() -> None:
 async def lifespan(_app: FastAPI):
     global _http, _tunnel
     _http = httpx.AsyncClient(timeout=15, follow_redirects=True)
-    engine.start()          # event loop asyncio khusus engine (thread sendiri)
     _start_discovery()      # HP bisa menemukan server ini sendiri
-    asyncio.create_task(_boot_connect())
+    # Engine & auto-connect dijalankan di background supaya server HTTP siap
+    # lebih dulu dan health check Fly tidak menunggu (atau ikut gagal).
+    threading.Thread(target=_safe_boot, daemon=True).start()
     if os.environ.get("TTL_TUNNEL", "1") != "0":
         _tunnel = _start_tunnel()
         threading.Thread(target=_print_tunnel_later, daemon=True).start()
