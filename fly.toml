@@ -4,7 +4,7 @@
 #   flyctl secrets set TTL_API_KEY=xxxxx
 #   flyctl deploy
 # ============================================================
-app = "tiktokliveandsroid"
+app = "tiktokliveandroid"
 primary_region = "sin"
 
 [build]
@@ -14,13 +14,19 @@ primary_region = "sin"
   TTL_PORT = "8080"
   # tunnel cloudflared tidak dipakai di Fly (koneksi keluar = IP datacenter)
   TTL_TUNNEL = "0"
+  # discovery UDP hanya untuk LAN; di Fly tidak ada LAN
+  TTL_DISCOVERY = "0"
+  # boot hanya modul web (tanpa engine / TikTokLive) agar health check pasti hidup
+  TTL_WEB_ONLY = "1"
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = "suspend"
+  # deploy gagal berulang kali karena mesin di-suspend saat health check jalan;
+  # jaga mesin tetap hidup agar Checks 1/1 stabil.
+  auto_stop_machines = false
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 1
 
   [http_service.concurrency]
     type = "requests"

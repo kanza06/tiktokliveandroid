@@ -55,3 +55,6 @@ apk/
 .fly/
 flyctl.exe
 node_modules/
+
+# deploy tusukan lokal
+_smoke_*.py

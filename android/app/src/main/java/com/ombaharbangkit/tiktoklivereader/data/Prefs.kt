@@ -13,9 +13,13 @@ class Prefs(context: Context) {
     private val sp = context.applicationContext
         .getSharedPreferences("tt_live_reader", Context.MODE_PRIVATE)
 
-    /** Alamat server terakhir. Kosong = belum pernah tersambung -> app mencari sendiri. */
+    /**
+     * Alamat server terakhir.
+     * Default = server Fly.io, jadi APK langsung tersambung tanpa setting IP.
+     * Kosong = paksa app mencari server di Wi-Fi.
+     */
     var serverUrl: String
-        get() = sp.getString("server_url", "") ?: ""
+        get() = sp.getString("server_url", ServerClient.FLY_URL) ?: ServerClient.FLY_URL
         set(value) = sp.edit().putString("server_url", value.trim()).apply()
 
     /** true bila user mengisi alamat server secara manual (tidak ditimpa pencarian otomatis). */

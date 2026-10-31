@@ -21,9 +21,12 @@ RUN pip install --upgrade pip && pip install -r requirements_server.txt
 COPY server ./server
 COPY server_app.py .
 
-# Fly meneruskan PORT lewat env; app.py membaca TTL_PORT
+# port HARUS 8080: Fly meneruskan trafik ke http_service.internal_port = 8080.
+# server_app.py mengikat host 0.0.0.0 (bukan 127.0.0.1) lewat uvicorn.
 ENV TTL_PORT=8080 \
-    TTL_TUNNEL=0
+    TTL_TUNNEL=0 \
+    TTL_DISCOVERY=0 \
+    TTL_WEB_ONLY=1
 
 EXPOSE 8080
 
