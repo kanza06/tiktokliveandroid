@@ -1,39 +1,37 @@
-# ============================================================
-# Fly.io — TikTok Live Reader Engine
-#   flyctl launch --no-deploy   (sekali)
-#   flyctl secrets set TTL_API_KEY=xxxxx
-#   flyctl deploy
-# ============================================================
-app = "tiktokliveandsroid"
-primary_region = "sin"
+# fly.toml app configuration file generated for tiktokliveandroid on 2026-10-31T03:58:14Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'tiktokliveandroid'
+primary_region = 'sin'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [env]
-  TTL_PORT = "8080"
-  # tunnel cloudflared tidak dipakai di Fly (koneksi keluar = IP datacenter)
-  TTL_TUNNEL = "0"
+  TTL_PORT = '8080'
+  TTL_TUNNEL = '0'
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = "suspend"
+  auto_stop_machines = 'suspend'
   auto_start_machines = true
   min_machines_running = 0
 
   [http_service.concurrency]
-    type = "requests"
-    soft_limit = 100
+    type = 'requests'
     hard_limit = 250
-
-[[vm]]
-  size = "shared-cpu-1x"
-  memory = "512mb"
+    soft_limit = 100
 
   [[http_service.checks]]
-    interval = "15s"
-    timeout = "5s"
-    grace_period = "20s"
-    method = "GET"
-    path = "/api/ping"
+    interval = '15s'
+    timeout = '5s'
+    grace_period = '20s'
+    method = 'GET'
+    path = '/api/ping'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '512mb'
