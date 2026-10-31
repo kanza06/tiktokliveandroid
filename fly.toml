@@ -22,8 +22,7 @@ primary_region = "sin"
 [http_service]
   internal_port = 8080
   force_https = true
-  # deploy gagal berulang kali karena mesin di-suspend saat health check jalan;
-  # jaga mesin tetap hidup agar Checks 1/1 stabil.
+  # machine selalu hidup agar health check stabil (Checks 1/1)
   auto_stop_machines = false
   auto_start_machines = true
   min_machines_running = 1
