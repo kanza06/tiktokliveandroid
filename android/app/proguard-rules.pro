@@ -1,0 +1,2 @@
+-dontwarn okhttp3.**
+-keep class org.json.** { *; }

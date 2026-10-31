@@ -1,0 +1,6 @@
+{
+  "provider": "auto",
+  "cloudflared": "",
+  "ngrok_token": "",
+  "playit_dir": ""
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="c_frame">#121217</color>
+    <color name="c_panel">#1C1C24</color>
+    <color name="c_panel2">#252530</color>
+    <color name="c_text">#EDEDF2</color>
+    <color name="c_muted">#A8A8BA</color>
+    <color name="c_accent">#25F4EE</color>
+    <color name="c_accent2">#E8204F</color>
+    <color name="c_border">#2E2E3B</color>
+    <color name="c_input">#22222C</color>
+</resources>

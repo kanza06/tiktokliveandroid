@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================
+     Layar utama FULL-SCREEN (edge-to-edge, seperti game):
+       wallpaperLayer (gambar pilihan user / gradasi tema)
+       + sparkLayer (bintang & hati melayang)
+       + scrim (lapisan gelap agar teks terbaca)
+       + konten
+     ============================================================ -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/screenRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Wallpaper: gambar galeri (jika ada) -->
+    <ImageView
+        android:id="@+id/wallpaperImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:alpha="0.92"
+        android:visibility="gone"
+        android:importantForAccessibility="no"
+        android:contentDescription="Latar belakang" />
+
+    <!-- Gradasi tema di bawah gambar (juga jadi latar saat tanpa gambar) -->
+    <View
+        android:id="@+id/wallpaperGradient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Lapisan gelap supaya teks tetap terbaca di atas wallpaper terang -->
+    <View
+        android:id="@+id/wallpaperScrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Hiasan: bintang & hati melayang (tidak menghalangi sentuhan) -->
+    <com.ombaharbangkit.tiktoklivereader.ui.SparkView
+        android:id="@+id/sparkLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no" />
+
+<LinearLayout
+    android:id="@+id/frameRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:tag="frame">
+
+    <!-- ============ TITLE BAR (pil kaca ramping): paw · status · gear · server ============ -->
+    <LinearLayout
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="10dp"
+        android:tag="glasspill"
+        android:background="@drawable/bg_glass_card"
+        android:paddingStart="12dp"
+        android:paddingEnd="6dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp">
+
+        <TextView
+            android:id="@+id/pawBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:text="🐾"
+            android:textSize="18sp"
+            android:includeFontPadding="false" />
+
+        <Button
+            android:id="@+id/btnSettings"
+            style="@style/IconButton"
+            android:layout_width="34dp"
+            android:layout_height="30dp"
+            android:text="⚙"
+            android:textSize="16sp"
+            android:tag="iconbtn"
+            android:contentDescription="Pengaturan" />
+
+        <LinearLayout
+            android:id="@+id/statusRow"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="2dp">
+
+            <TextView
+                android:id="@+id/statusDot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="●"
+                android:textSize="13sp"
+                android:textColor="@color/dark_accent2" />
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Belum terhubung"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:tag="tv" />
+
+            <ProgressBar
+                android:id="@+id/statusProgress"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="4dp"
+                android:visibility="gone"
+                android:indeterminateTint="@color/dark_accent2" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnWallpaper"
+            style="@style/IconButton"
+            android:layout_width="34dp"
+            android:layout_height="30dp"
+            android:text="🖼"
+            android:textSize="15sp"
+            android:tag="iconbtn"
+            android:contentDescription="Ganti latar belakang" />
+
+        <Button
+            android:id="@+id/btnServer"
+            style="@style/IconButton"
+            android:layout_width="34dp"
+            android:layout_height="30dp"
+            android:text="🌐"
+            android:textSize="16sp"
+            android:tag="iconbtn"
+            android:contentDescription="Pengaturan server" />
+    </LinearLayout>
+
+    <!-- ============ BARIS STATISTIK (chip kaca transparan penuh lebar) ============ -->
+    <LinearLayout
+        android:id="@+id/statsBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        android:tag="ghoststrip"
+        android:background="@drawable/bg_pill_ghost"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp">
+
+        <Button
+            android:id="@+id/btnViewers"
+            style="@style/IconButton"
+            android:layout_width="28dp"
+            android:layout_height="26dp"
+            android:text="👁"
+            android:textSize="14sp"
+            android:tag="iconbtn"
+            android:contentDescription="Penonton aktif" />
+
+        <TextView
+            android:id="@+id/countViewers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:tag="accent" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="1dp" />
+
+        <Button
+            android:id="@+id/btnVisitors"
+            style="@style/IconButton"
+            android:layout_width="28dp"
+            android:layout_height="26dp"
+            android:text="👥"
+            android:textSize="14sp"
+            android:tag="iconbtn"
+            android:contentDescription="Pernah mampir" />
+
+        <TextView
+            android:id="@+id/countVisitors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:tag="accent" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="1dp" />
+
+        <Button
+            android:id="@+id/btnGifters"
+            style="@style/IconButton"
+            android:layout_width="28dp"
+            android:layout_height="26dp"
+            android:text="🎁"
+            android:textSize="14sp"
+            android:tag="iconbtn"
+            android:contentDescription="Pemberi gift" />
+
+        <TextView
+            android:id="@+id/countGifters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:tag="accent" />
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:id="@+id/netLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="⬆ --  ⬇ --"
+            android:tag="muted" />
+    </LinearLayout>
+
+    <!-- ============ BODY ===============================================================
+         Komentar dibuat PENUH (satu-satunya daftar), sementara
+         * gift   -> animasi melayang dari bawah ke atas (overlay)
+         * bergabung -> teks mengambang yang muncul lalu hilang (overlay)
+         ============================================================================== -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:clipChildren="false"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="2dp">
+
+            <TextView
+                android:id="@+id/commentHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💬 Komentar"
+                android:textStyle="bold"
+                android:tag="headerlabel"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/bg_pill_ghost" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listComments"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:tag="transparentlist"
+                android:clipToPadding="false"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="62dp" />
+        </LinearLayout>
+
+        <!-- Toast bergabung: mengambang di zona bawah, TIDAK mengenai teks komentar -->
+        <LinearLayout
+            android:id="@+id/joinOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="6dp"
+            android:orientation="vertical"
+            android:gravity="bottom|end"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="2dp"
+            android:clipChildren="false"
+            android:clickable="false"
+            android:focusable="false"
+            android:importantForAccessibility="no" />
+
+        <!-- Gift melayang: dari bawah ke atas sambil memudar (tidak pernah menimpa komentar) -->
+        <LinearLayout
+            android:id="@+id/giftOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:clipChildren="false"
+            android:clickable="false"
+            android:focusable="false"
+            android:importantForAccessibility="no" />
+    </RelativeLayout>
+
+
+
+    <!-- ============ BOTTOM BAR (pil kaca ramping): info + follow ============ -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="10dp"
+        android:tag="glasspill"
+        android:background="@drawable/bg_glass_card"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp">
+
+        <TextView
+            android:id="@+id/footerText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="Belum terhubung"
+            android:tag="muted" />
+
+        <TextView
+            android:id="@+id/followLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="♪ Follow @ombaharbangkit350jt"
+            android:textStyle="bold"
+            android:tag="pill" />
+    </LinearLayout>
+</LinearLayout>
+</FrameLayout>

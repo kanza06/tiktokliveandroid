@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splashRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="28dp"
+    android:background="#121217">
+
+    <ImageView
+        android:id="@+id/splashLogo"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="TikTok Live Reader"
+        android:textStyle="bold"
+        android:textSize="21sp"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/splashStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Memuat aplikasi... 0%"
+        android:textSize="13sp"
+        android:textColor="#8A8AA0" />
+
+    <ProgressBar
+        android:id="@+id/splashBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="240dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="16dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#25F4EE"
+        android:progressBackgroundTint="#25252F" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:gravity="center"
+        android:text="Jangan lupa follow akun TikTok\n@ombaharbangkit350jt"
+        android:textColor="#C8C8D8"
+        android:textSize="12sp" />
+</LinearLayout>

@@ -1,0 +1,5 @@
+TikTokLive>=7.0.0
+fastapi>=0.110
+uvicorn[standard]>=0.29
+httpx>=0.27
+psutil>=5.9

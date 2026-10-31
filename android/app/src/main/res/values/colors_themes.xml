@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================
+     TEMA XML: Kawaii Midnight, Cyber Neon, Matrik, Neon Kawaii Dark
+     Dipakai oleh Theme.KawaiiMidnight / Theme.CyberNeon / Theme.Matrik /
+     Theme.NeonKawaiiDark (lihat values/styles_themes.xml) dan oleh
+     Theme.kt supaya warna runtime sama dengan XML.
+     ============================================================ -->
+<resources>
+
+    <!-- 1. KAWAII MIDNIGHT — gelap lembut, aksen pink pastel -->
+    <color name="km_bg">#141019</color>
+    <color name="km_panel">#1D1726</color>
+    <color name="km_panel2">#2A2136</color>
+    <color name="km_text">#F6EFFF</color>
+    <color name="km_muted">#B7A7CE</color>
+    <color name="km_accent">#FFA6D5</color>
+    <color name="km_accent2">#C8A2FF</color>
+    <color name="km_border">#3A2F4A</color>
+    <color name="km_bubble">#241C30</color>
+    <color name="km_bubble_stroke">#453856</color>
+
+    <!-- 2. CYBER NEON — biru malam, aksen neon mint & magenta -->
+    <color name="cn_bg">#05070C</color>
+    <color name="cn_panel">#0B1118</color>
+    <color name="cn_panel2">#101B26</color>
+    <color name="cn_text">#E6FBFF</color>
+    <color name="cn_muted">#7E93A3</color>
+    <color name="cn_accent">#00FFC6</color>
+    <color name="cn_accent2">#FF2E97</color>
+    <color name="cn_border">#16303A</color>
+    <color name="cn_bubble">#0E1A22</color>
+    <color name="cn_bubble_stroke">#1B3E4C</color>
+
+    <!-- 3. MATRIK — hitam pekat, teks hijau terminal -->
+    <color name="mx_bg">#000000</color>
+    <color name="mx_panel">#050A05</color>
+    <color name="mx_panel2">#0B140B</color>
+    <color name="mx_text">#B9FFC4</color>
+    <color name="mx_muted">#5F9E6B</color>
+    <color name="mx_accent">#3BFF6F</color>
+    <color name="mx_accent2">#9BFF3B</color>
+    <color name="mx_border">#12351C</color>
+    <color name="mx_bubble">#07120A</color>
+    <color name="mx_bubble_stroke">#1C4E2A</color>
+
+    <!-- 4. NEON KAWAII DARK — ungu magenta, aksen pink & cyan -->
+    <color name="nk_bg">#120A17</color>
+    <color name="nk_panel">#1B0F25</color>
+    <color name="nk_panel2">#281438</color>
+    <color name="nk_text">#FFF0FB</color>
+    <color name="nk_muted">#C79BD8</color>
+    <color name="nk_accent">#FF5FD2</color>
+    <color name="nk_accent2">#5FF3FF</color>
+    <color name="nk_border">#3A1F4D</color>
+    <color name="nk_bubble">#22112E</color>
+    <color name="nk_bubble_stroke">#4A2A60</color>
+
+</resources>

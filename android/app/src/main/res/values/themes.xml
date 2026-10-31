@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema dasar: semua warna diatur runtime mengikuti pengaturan tema -->
+    <style name="Theme.TikTokLiveReader" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/dark_bg</item>
+        <item name="android:statusBarColor">@color/dark_bg</item>
+        <item name="android:navigationBarColor">@color/dark_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/dark_accent2</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="Theme.TikTokLiveReader.Splash" parent="Theme.TikTokLiveReader">
+        <item name="android:windowBackground">@color/dark_bg</item>
+    </style>
+
+    <!-- Dialog daftar (tema / font / pilihan): latar solid gelap + teks terang,
+         supaya item tidak "hilang" (teks gelap di latar gelap). -->
+    <style name="Dialog.List" parent="ThemeOverlay.Material3.Dialog.Alert">
+        <item name="android:windowBackground">@color/dark_card</item>
+        <item name="android:background">@color/dark_card</item>
+        <item name="colorSurface">@color/dark_card</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:windowMinWidthMajor">88%</item>
+        <item name="android:windowMinWidthMinor">88%</item>
+    </style>
+
+    <!-- Font aplikasi: paksa Roboto agar font display pengguna (Choco Cooky dll) tidak dipakai -->
+    <style name="AppFont">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Tombol ikon (⚙ 🌐 🧪 👁 👥 🎁) — tanpa font bawaan Material supaya emoji tampil -->
+    <style name="IconButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+
+    <!-- Chip pilihan jejak (Sembunyi / Gift / Bergabung) -->
+    <style name="TrailChip" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- Tombol dalam dialog pengaturan: netral, ikut tema (bukan merah menyala) -->
+    <style name="DialogButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- Segmen tombol (Tema / Satuan kecepatan) -->
+    <style name="SegButton" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/bg_segment</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:textColor">@color/segment_text</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">42dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/bg_primary</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+</resources>

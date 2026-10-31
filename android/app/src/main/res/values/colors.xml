@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema Gelap (default, sama dengan THEMES["dark"] di main.py) -->
+    <color name="dark_bg">#121217</color>
+    <color name="dark_panel">#1C1C24</color>
+    <color name="dark_panel2">#252530</color>
+    <color name="dark_text">#EDEDF2</color>
+    <color name="dark_muted">#A8A8BA</color>
+    <color name="dark_accent">#25F4EE</color>
+    <color name="dark_accent2">#E8204F</color>
+    <color name="dark_border">#2E2E3B</color>
+    <color name="dark_input">#22222C</color>
+
+    <!-- Tema Terang -->
+    <color name="light_bg">#F5F6FA</color>
+    <color name="light_panel">#FFFFFF</color>
+    <color name="light_panel2">#EEF0F6</color>
+    <color name="light_text">#1A1A22</color>
+    <color name="light_muted">#5C5C6E</color>
+    <color name="light_accent">#0E8F8A</color>
+    <color name="light_accent2">#D91E48</color>
+    <color name="light_border">#DCDDE6</color>
+    <color name="light_input">#FFFFFF</color>
+
+    <color name="white">#FFFFFF</color>
+    <!-- latar dialog daftar (tema/font) -->
+    <color name="dark_card">#1C1C24</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Warna "aktif" yang ditimpa runtime sesuai tema (lihat Theme.kt) -->
+    <color name="c_frame">#121217</color>
+    <color name="c_panel">#1C1C24</color>
+    <color name="c_panel2">#252530</color>
+    <color name="c_text">#EDEDF2</color>
+    <color name="c_muted">#A8A8BA</color>
+    <color name="c_accent">#25F4EE</color>
+    <color name="c_accent2">#E8204F</color>
+    <color name="c_border">#2E2E3B</color>
+    <color name="c_input">#22222C</color>
+</resources>

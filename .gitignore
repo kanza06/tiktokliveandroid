@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+venv*/
+venv312/
+
+# PyInstaller
+build/
+dist/TikTokLiveReader/
+*.spec.bak
+
+# Cache gambar lokal
+image_cache/
+
+# Log & file sementara
+*.log
+out.log
+
+# Pengaturan pribadi (opsional: hapus baris ini jika ingin ikut repo)
+# settings.json
+dist/
+
+# ============================================================
+# RAHASIA — JANGAN PERNAH COMMIT
+# ============================================================
+.env
+.env.*
+*.env
+.secret
+.secrets
+*secret*
+*token*
+server/cloudflared.exe
+server/settings_server.json
+settings.json
+*.pem
+*.key
+
+# File besar / hasil build
+*.exe
+*.apk
+*.zip
+*.spec
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+apk/
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# Deploy / tooling
+.fly/
+flyctl.exe
+node_modules/

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================
+     TEMA XML — Kawaii Midnight, Cyber Neon, Matrik, Neon Kawaii Dark.
+     Masing-masing berupa <style> lengkap: warna sistem, status bar,
+     latar window, dan drawable pratinjau (bg_*_frame / _panel / _bubble).
+     Ganti tema dari kode: Theme.applyTheme(activity, "cyberneon")
+     atau dari pilihan tema di dialog Pengaturan.
+     ============================================================ -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 1. KAWAII MIDNIGHT -->
+    <style name="Theme.KawaiiMidnight" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_km_frame</item>
+        <item name="android:statusBarColor">@color/km_bg</item>
+        <item name="android:navigationBarColor">@color/km_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/km_accent</item>
+        <item name="colorSecondary">@color/km_accent2</item>
+        <item name="colorOnPrimary">#14141A</item>
+        <item name="android:colorBackground">@color/km_bg</item>
+        <item name="android:textColorPrimary">@color/km_text</item>
+        <item name="android:textColorSecondary">@color/km_muted</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <!-- 2. CYBER NEON -->
+    <style name="Theme.CyberNeon" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_cn_frame</item>
+        <item name="android:statusBarColor">@color/cn_bg</item>
+        <item name="android:navigationBarColor">@color/cn_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/cn_accent</item>
+        <item name="colorSecondary">@color/cn_accent2</item>
+        <item name="colorOnPrimary">#04211B</item>
+        <item name="android:colorBackground">@color/cn_bg</item>
+        <item name="android:textColorPrimary">@color/cn_text</item>
+        <item name="android:textColorSecondary">@color/cn_muted</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <!-- 3. MATRIK -->
+    <style name="Theme.Matrik" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_mx_frame</item>
+        <item name="android:statusBarColor">@color/mx_bg</item>
+        <item name="android:navigationBarColor">@color/mx_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/mx_accent</item>
+        <item name="colorSecondary">@color/mx_accent2</item>
+        <item name="colorOnPrimary">#00120A</item>
+        <item name="android:colorBackground">@color/mx_bg</item>
+        <item name="android:textColorPrimary">@color/mx_text</item>
+        <item name="android:textColorSecondary">@color/mx_muted</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <!-- 4. NEON KAWAII DARK -->
+    <style name="Theme.NeonKawaiiDark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_nk_frame</item>
+        <item name="android:statusBarColor">@color/nk_bg</item>
+        <item name="android:navigationBarColor">@color/nk_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/nk_accent</item>
+        <item name="colorSecondary">@color/nk_accent2</item>
+        <item name="colorOnPrimary">#22101C</item>
+        <item name="android:colorBackground">@color/nk_bg</item>
+        <item name="android:textColorPrimary">@color/nk_text</item>
+        <item name="android:textColorSecondary">@color/nk_muted</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+</resources>

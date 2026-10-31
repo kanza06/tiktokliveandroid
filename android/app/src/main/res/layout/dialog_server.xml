@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/serverRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:tag="dialog">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Server Python Engine"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:tag="accent"
+        android:paddingBottom="6dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jalankan run_server.bat di PC. Aplikasi mencari server sendiri di Wi-Fi — biarkan kolom di bawah kosong. Isi hanya bila ingin alamat lain (tunnel/URL)."
+        android:tag="muted"
+        android:paddingBottom="10dp" />
+
+    <EditText
+        android:id="@+id/inputServer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:inputType="textUri"
+        android:hint="(kosong = otomatis) atau 192.168.0.104:8000"
+        android:tag="input" />
+
+    <Button
+        android:id="@+id/btnFindServer"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:text="🔍 Cari Otomatis"
+        android:tag="seg"
+        android:stateListAnimator="@null" />
+
+    <EditText
+        android:id="@+id/inputApiKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:singleLine="true"
+        android:inputType="textVisiblePassword"
+        android:hint="API key (opsional, bila server memakai TTL_API_KEY)"
+        android:tag="input" />
+
+    <TextView
+        android:id="@+id/serverHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="Belum tersambung"
+        android:tag="muted" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="14dp">
+
+        <Button
+            android:id="@+id/btnTestServer"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="Tes"
+            android:textAllCaps="false"
+            android:tag="seg"
+            android:stateListAnimator="@null" />
+
+        <Button
+            android:id="@+id/btnTunnelUrl"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Tunnel"
+            android:textAllCaps="false"
+            android:tag="seg"
+            android:stateListAnimator="@null" />
+
+        <Button
+            android:id="@+id/btnSaveServer"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:tag="primary"
+            android:stateListAnimator="@null" />
+    </LinearLayout>
+</LinearLayout>

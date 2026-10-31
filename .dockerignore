@@ -1,0 +1,23 @@
+# Jangan kirim ke image — server saja yang dibutuhkan
+android/
+apk/
+image_cache/
+venv*/
+venv312/
+dist/
+build/
+__pycache__/
+*.pyc
+*.log
+*.spec
+*.exe
+*.apk
+*.png
+*.jpg
+*.zip
+.git/
+.vscode/
+README*.md
+thema.png
+1.png
+tools/
