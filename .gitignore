@@ -58,3 +58,6 @@ node_modules/
 
 # deploy tusukan lokal
 _smoke_*.py
+
+# artefak release lokal (APK diunggah ke GitHub Releases)
+release/*.apk
