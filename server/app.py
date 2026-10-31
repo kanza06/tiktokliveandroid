@@ -143,6 +143,9 @@ def _discovery_listener() -> None:
 
 
 def _start_discovery() -> None:
+    if os.environ.get("TTL_DISCOVERY", "1") == "0":
+        print("[DISCOVERY] dimatikan lewat TTL_DISCOVERY=0", flush=True)
+        return
     threading.Thread(target=_discovery_listener, name="discovery", daemon=True).start()
 
 

@@ -4,7 +4,7 @@
 #   flyctl secrets set TTL_API_KEY=xxxxx
 #   flyctl deploy
 # ============================================================
-app = "tiktokliveandsroid"
+app = "tiktokliveandroid"
 primary_region = "sin"
 
 [build]
@@ -14,6 +14,8 @@ primary_region = "sin"
   TTL_PORT = "8080"
   # tunnel cloudflared tidak dipakai di Fly (koneksi keluar = IP datacenter)
   TTL_TUNNEL = "0"
+  # discovery UDP hanya untuk LAN; di Fly tidak ada LAN
+  TTL_DISCOVERY = "0"
 
 [http_service]
   internal_port = 8080
