@@ -37,7 +37,13 @@ object ServerDiscovery {
     private const val TIMEOUT_READ = 1200
     private const val USER_AGENT = "TikTokLiveReader-Android"
 
-    /** Cari server; null bila tidak ada di jaringan ini. */
+    /**
+     * Cari server; null bila tidak ada di jaringan ini.
+     *
+     * Alamat tersimpan (default: server Fly https) dicoba lebih dulu. Bila tidak
+     * menjawab, pencarian LAN tetap jalan sebagai cadangan; pemanggil yang memilih
+     * hasilnya, jadi URL https tidak ditimpa diam-diam di sini.
+     */
     suspend fun find(ctx: Context, saved: String = ""): String? = withContext(Dispatchers.IO) {
         withTimeoutOrNull(TOTAL_TIMEOUT_MS) {
             val savedUrl = ServerClient.normalize(saved)

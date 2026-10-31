@@ -22,6 +22,16 @@ PORT = int(os.environ.get("TTL_PORT", "8080"))
 API_KEY = os.environ.get("TTL_API_KEY", "").strip()
 DISCOVERY_PORT = 47653
 
+# Harus sama dengan DEFAULTS di server/config.py agar APK menerima bentuk yang dikenal.
+DEFAULT_SETTINGS = {
+    "username": "",
+    "opacity": 90,
+    "font_size": 14,
+    "font_family": "Segoe UI",
+    "theme": "dark",
+    "speed_unit": "kbps",
+}
+
 
 def lan_ip() -> str:
     """IP keluar container; di Fly nilainya IP privat mesin."""
@@ -80,16 +90,46 @@ def discover():
 
 
 @app.get("/api/status")
-def status(since: int = 0):
-    """Belum ada engine di mode web, jadi tidak ada event."""
+def status(since: int = 0, meta: int = 0):  # noqa: ARG001
+    """Snapshot kosong dengan bentuk yang dibaca APK Android (JsonParse.snapshot).
+
+    Mode web belum menyalakan engine, jadi tidak ada event; tapi semua kunci
+    harus ada supaya APK tidak menampilkan "Server tidak terjangkau".
+    """
     return {
         "ok": True,
+        "username": "",
+        "status": "Terhubung ke server cloud (Fly)",
         "mode": "web",
+        "error": "",
         "seq": 0,
-        "since": since,
+        "live_seconds": 0,
+        "active": 0,
+        "visitors": 0,
+        "gifters": 0,
+        "likes": 0,
+        "follows": 0,
+        "shares": 0,
+        "comments": [],
+        "gifts": [],
+        "joins": [],
+        "active_list": [],
+        "visitors_list": [],
+        "gifters_list": [],
         "events": [],
-        "stats": {"comments": 0, "gifts": 0, "viewers": 0, "likes": 0},
+        "settings": DEFAULT_SETTINGS,
     }
+
+
+@app.get("/api/settings")
+def get_settings():
+    return dict(DEFAULT_SETTINGS)
+
+
+@app.post("/api/settings")
+def post_settings(_patch: dict | None = None):
+    """Mode web tidak menyimpan pengaturan; kembalikan nilai default."""
+    return dict(DEFAULT_SETTINGS)
 
 
 @app.get("/")
@@ -98,5 +138,6 @@ def index():
         "app": APP_NAME,
         "version": VERSION,
         "mode": "web",
-        "endpoints": ["/api/ping", "/api/health", "/api/discover", "/api/status", "/docs"],
+        "endpoints": ["/api/ping", "/api/health", "/api/discover",
+                      "/api/status", "/api/settings", "/docs"],
     }

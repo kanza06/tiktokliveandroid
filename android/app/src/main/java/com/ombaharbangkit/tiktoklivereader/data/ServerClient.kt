@@ -37,14 +37,22 @@ class ServerClient(baseUrl: String, apiKey: String = "") {
     companion object {
         private val JSON = "application/json; charset=utf-8".toMediaType()
 
-        /** Terima "192.168.0.104", "192.168.0.104:8000", "http://..." */
+        /** Server publik di Fly.io (dipakai otomatis sebelum pencarian di Wi-Fi). */
+        const val FLY_URL = "https://tiktokliveandroid.fly.dev"
+
+        /** true bila URL memakai skema https (server publik / Fly). */
+        fun isHttps(url: String): Boolean = url.trim().startsWith("https://", ignoreCase = true)
+
+        /** Terima "192.168.0.104", "192.168.0.104:8000", "http://...", "https://..." */
         fun normalize(raw: String): String {
             var s = raw.trim()
             if (s.isEmpty()) return ""
             if (!s.startsWith("http://") && !s.startsWith("https://")) s = "http://$s"
             s = s.trimEnd('/')
             val afterScheme = s.substringAfter("://")
-            if (!afterScheme.contains(':')) s += ":8000"
+            // https (Fly/domain) sudah memakai port 443 — JANGAN tambah :8000.
+            // Hanya alamat LAN biasa (http tanpa port) yang memakai port 8000.
+            if (!afterScheme.contains(':') && !isHttps(s)) s += ":8000"
             return s
         }
 

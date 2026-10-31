@@ -394,9 +394,16 @@ class MainActivity : AppCompatActivity() {
         pollOk = false
         val pal = Theme.palette(prefs.toSettings())
         statusDot.setTextColor(pal.accent2)
-        statusText.text = if (searching) "Mencari server di Wi-Fi..." else "Server tidak terjangkau"
-        footerText.text = if (searching) "Pastikan run_server.bat jalan di PC"
-        else "$reason · tekan 🌐 atau ketuk di sini untuk mencari ulang"
+        val cloud = ServerClient.isHttps(prefs.serverUrl)
+        statusText.text = when {
+            searching -> "Menghubungkan ke server..."
+            else -> "Server tidak terjangkau"
+        }
+        footerText.text = when {
+            searching && cloud -> "Menghubungi tiktokliveandroid.fly.dev"
+            searching -> "Mencari server di Wi-Fi..."
+            else -> "$reason · tekan 🌐 atau ketuk di sini untuk mencari ulang"
+        }
         if (!searching) maybeAutoDiscover()
     }
 
@@ -414,7 +421,15 @@ class MainActivity : AppCompatActivity() {
                 null
             }
             searching = false
-            if (found != null) {
+            // Server Fly (https) yang tersimpan tidak boleh diganti oleh hasil scan LAN:
+            // APK harus tetap menunjuk ke https://tiktokliveandroid.fly.dev.
+            val current = ServerClient.normalize(prefs.serverUrl)
+            val keepCloud = ServerClient.isHttps(current) && current == ServerClient.FLY_URL
+            if (found != null && keepCloud) {
+                client = ServerClient(current, prefs.apiKey)
+                since = 0
+                pollOnce()
+            } else if (found != null) {
                 prefs.serverUrl = found
                 client = ServerClient(found, prefs.apiKey)
                 since = 0
