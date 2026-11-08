@@ -45,7 +45,7 @@ from .live_engine import LiveEngine, LiveState
 APP_NAME = "TikTok Live Reader Engine"
 VERSION = "1.1.0"
 ROOT = Path(__file__).resolve().parent.parent
-PORT = int(os.environ.get("TTL_PORT", "8000"))
+PORT = int(os.environ.get("TTL_PORT") or "8080")
 API_KEY = os.environ.get("TTL_API_KEY", "").strip()
 
 state = LiveState()
